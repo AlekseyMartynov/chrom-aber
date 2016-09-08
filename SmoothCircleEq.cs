@@ -32,8 +32,10 @@ namespace ChromAber {
                     var diffX = x + dx - _centerX;
                     var diffY = y + dy - _centerY;
 
-                    if(diffX * diffX + diffY * diffY < _radius * _radius)
-                        result += FILTER[1 + dx, 1 + dy];
+                    var dist = Math.Sqrt(diffX * diffX + diffY * diffY);
+
+                    if(dist <= _radius)
+                        result += Math.Min(_radius - dist, 1) * FILTER[1 + dx, 1 + dy];                    
                 }
             }
 
