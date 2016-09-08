@@ -71,6 +71,7 @@ namespace ChromAber {
 
         static double[,] FillMatrix(Rgb[] colors, Func<Rgb, double> componentSelector, SmoothCircleEq eq) {
             var matrix = new double[IMAGE_W, IMAGE_H];
+            var aberrationWidth = 200;
 
             for(var x = 0; x < IMAGE_W; x++) {
                 for(var y = 0; y < IMAGE_H; y++) {
@@ -79,9 +80,9 @@ namespace ChromAber {
                         continue;
 
                     for(var i = 0; i < colors.Length; i++) {
-                        var aberration = (i - colors.Length / 2) / 2;
-                        var defocusedX = x - aberration;
-                        
+                        var aberration = aberrationWidth * ((double)i / colors.Length - 0.5);
+                        var defocusedX = (int)(x - aberration);
+
                         if(defocusedX > 0 && defocusedX < IMAGE_W)
                             matrix[defocusedX, y] += score * componentSelector(colors[i]);
                     }
