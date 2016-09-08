@@ -54,10 +54,10 @@ namespace ChromAber {
         }
 
         static Rgb[] InitColors() {
-            var rgbCalculator = new RgbCalculator();
-            var planckLaw = new PlanckLaw(7000);
+            var rgbCalculator = new RgbCalculator2(RgbCalculator2.MATRIX_PRO_PHOTO_D50, false);
+            var planckLaw = new PlanckLaw(6500);
 
-            return Enumerable.Range(380, 310)
+            return Enumerable.Range(390, 310)
                 .Select(len => {
                     var radiation = planckLaw.Calc(len);
                     var rgb = rgbCalculator.Calc(len);

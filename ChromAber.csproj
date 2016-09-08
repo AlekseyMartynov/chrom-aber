@@ -38,6 +38,7 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RgbCalculator2.cs" />
     <Compile Include="SmoothCircleEq.cs" />
     <Compile Include="PlanckLaw.cs" />
     <Compile Include="Program.cs" />
